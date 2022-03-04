@@ -3,22 +3,20 @@ import requests
 from time import sleep
 
 class Tradutor:
-    def __init__(self, palavra, source='en', target='pt'):
-        self.palavra_sem_traducao = palavra
+    def __init__(self, source='en', target='pt'):
         self.lingua_source = source
         self.lingua_target = target
+        
+    def traduzir(self, texto_para_traducao):
         print('Traduzindo palavra...')
         sleep(0.8)
-        self._palavra_traduzida = 'não está traduzido ainda, rode o método traduzir'
 
-
-    def traduzir(self, palavra_para_traducao):
         # testando API para tradução 
         url = "https://google-translate1.p.rapidapi.com/language/translate/v2"
 
-        key_da_api = self.pega_chave_api()
+        key_da_api = self._pega_chave_api()
 
-        payload = f"q={palavra_para_traducao}&target={self.lingua_target}&source={self.lingua_source}"
+        payload = f"q={texto_para_traducao}&target={self.lingua_target}&source={self.lingua_source}"
         headers = {
             'content-type': "application/x-www-form-urlencoded",
             'accept-encoding': "application/gzip",
@@ -37,16 +35,9 @@ class Tradutor:
 
         return  nome_traduzido
     
-    def pega_chave_api(self):
+    def _pega_chave_api(self):
         with open('key_tradutor_API.txt', mode = 'r') as arquivo_chave:
             key_api = arquivo_chave.readline()
         
         return key_api
-
-if __name__ == "__main__":
-    texto = 'I love you'
-    traduzir = Tradutor(texto)
-    
-    print(traduzir.traduzir(texto))
-
-    
+            
