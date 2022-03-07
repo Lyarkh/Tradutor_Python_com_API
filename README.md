@@ -11,7 +11,7 @@ Criando uma programa que consulta a API Google Translate e traduz para qualquer 
 
 > Caso queira saber quais linguagens são aceitas por essa API, pode-se verificar na documentação
 da API em: [Documentação API Google](https://rapidapi.com/googlecloud/api/google-translate1/)
-Também é possivel se rodar o metodo`linguagens_disponiveis()`da classe Tradutor
+e também é possivel ver se rodar o metodo`linguagens_disponiveis()`da classe Tradutor
 
 </details>
 
