@@ -39,5 +39,29 @@ class Tradutor:
         with open('key_tradutor_API.txt', mode = 'r') as arquivo_chave:
             key_api = arquivo_chave.readline()
         
+        
         return key_api
             
+    def linguagens_disponiveis(self):
+
+        url = "https://google-translate1.p.rapidapi.com/language/translate/v2/languages"
+
+        key_da_api = self._pega_chave_api()
+
+        headers = {
+            'accept-encoding': "application/gzip",
+            'x-rapidapi-host': "google-translate1.p.rapidapi.com",
+            'x-rapidapi-key': f"{key_da_api}"
+            }
+
+        response = requests.request("GET", url, headers=headers)
+        resposta = response.json()
+
+        linguas = resposta['data']['languages']
+
+        print('Linguagens disponíveis: ')
+        for posicao, lingua in enumerate(linguas):
+            print(lingua['language'], end =' - ')
+
+            if posicao == len(linguas)-1:
+                print(lingua['language'])

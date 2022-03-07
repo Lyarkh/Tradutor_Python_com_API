@@ -9,5 +9,9 @@ class Principal:
         
         print(traducao)
     
+    def verificando_linguagens(self):
+        tradutor = Tradutor()
+        tradutor.linguagens_disponiveis()
+    
 if __name__ == "__main__":
-    Principal().main()
+    Principal().verificando_linguagens()
